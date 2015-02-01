@@ -1,0 +1,21 @@
+max_blocks: 30
+
+tachyon_use:
+    max: 1000
+    recharge: 25
+    recharge_interval: 1200
+    remove_per_block: 10
+    restore_per_block: 20
+respect:
+    worldborder: true
+    worldguard: true
+    griefprevention: true
+    factions: true
+    towny: true
+storage:
+  database: sqlite
+  mysql:
+    url: mysql://localhost:3306/TSB
+    user: bukkit
+    password: mysecurepassword
+debug: false
