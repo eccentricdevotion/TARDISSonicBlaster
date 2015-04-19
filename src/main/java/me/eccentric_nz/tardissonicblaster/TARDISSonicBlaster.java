@@ -2,6 +2,9 @@ package me.eccentric_nz.tardissonicblaster;
 
 import java.io.File;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 import me.eccentric_nz.TARDIS.TARDIS;
 import me.eccentric_nz.TARDIS.api.TardisAPI;
 import me.eccentric_nz.TARDIS.files.TARDISFileCopier;
@@ -19,6 +22,8 @@ public class TARDISSonicBlaster extends JavaPlugin {
     private TardisAPI tardisAPI;
     private TARDIS tardis;
     private FileConfiguration recipesConfig;
+    private double maxUsableDistance;
+    private final List<UUID> isBlasting = new ArrayList<UUID>();
 
     @Override
     public void onDisable() {
@@ -44,6 +49,7 @@ public class TARDISSonicBlaster extends JavaPlugin {
         pm.registerEvents(new TARDISSonicBlasterCraftListener(), this);
         getCommand("tardissonicblaster").setExecutor(new TARDISSonicBlasterCommand(this));
         loadRecipes();
+        maxUsableDistance = Math.sqrt(getConfig().getDouble("max_blocks"));
     }
 
     private void loadRecipes() {
@@ -75,5 +81,13 @@ public class TARDISSonicBlaster extends JavaPlugin {
 
     public FileConfiguration getRecipesConfig() {
         return recipesConfig;
+    }
+
+    public double getMaxUsableDistance() {
+        return maxUsableDistance;
+    }
+
+    public List<UUID> getIsBlasting() {
+        return isBlasting;
     }
 }
