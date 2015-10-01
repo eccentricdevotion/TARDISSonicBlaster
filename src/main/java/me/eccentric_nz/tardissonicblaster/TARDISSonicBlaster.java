@@ -34,10 +34,12 @@ public class TARDISSonicBlaster extends JavaPlugin {
     public void onEnable() {
         saveDefaultConfig();
         PluginManager pm = getServer().getPluginManager();
-        /* Get TARDIS */
+        /*
+         * Get TARDIS
+         */
         Plugin p = pm.getPlugin("TARDIS");
-        if (p == null) {
-            System.err.println("Cannot find TARDIS!");
+        if (p == null || !p.isEnabled()) {
+            System.err.println("[TARDISSonicBlaster] Cannot find TARDIS!");
             pm.disablePlugin(this);
             return;
         }
