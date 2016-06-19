@@ -45,7 +45,7 @@ public class TARDISSonicBlasterCraftListener implements Listener {
         Recipe recipe = ci.getRecipe();
         ItemStack is = ci.getResult();
         if (recipe instanceof ShapedRecipe) {
-            if (!is.hasItemMeta() || !is.getItemMeta().hasDisplayName() || !is.getItemMeta().getDisplayName().equals("Sonic Blaster")) {
+            if (is == null || !is.hasItemMeta() || !is.getItemMeta().hasDisplayName() || !is.getItemMeta().getDisplayName().equals("Sonic Blaster")) {
                 return;
             }
             ItemStack b1 = ci.getItem(7);
