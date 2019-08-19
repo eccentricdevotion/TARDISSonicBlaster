@@ -70,7 +70,7 @@ public class TARDISSonicBlaster extends JavaPlugin {
     public File copy(String filename) {
         String filepath = getDataFolder() + File.separator + filename;
         InputStream in = getResource(filename);
-        return TARDISFileCopier.copy(filepath, in, false, pluginName);
+        return TARDISFileCopier.copy(filepath, in, false);
     }
 
     public TardisAPI getTardisAPI() {

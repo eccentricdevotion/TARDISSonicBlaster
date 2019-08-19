@@ -3,7 +3,8 @@ description: The blaster used digital technology to create a sonic wave, project
 main: me.eccentric_nz.tardissonicblaster.TARDISSonicBlaster
 name: TARDISSonicBlaster
 load: POSTWORLD
-version: '1.0'
+version: 1.0.1
+api-version: 1.14
 website: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
 dev-url: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
 url: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster

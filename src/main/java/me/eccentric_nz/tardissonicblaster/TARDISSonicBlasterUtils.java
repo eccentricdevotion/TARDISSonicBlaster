@@ -18,7 +18,7 @@ public class TARDISSonicBlasterUtils {
     public static boolean checkBlasterInHand(Player p) {
         ItemStack is = p.getItemInHand();
 
-        if (is == null || !is.getType().equals(Material.GOLD_HOE)) {
+        if (is == null || !is.getType().equals(Material.GOLDEN_HOE)) {
             return false;
         }
         ItemMeta im = is.getItemMeta();

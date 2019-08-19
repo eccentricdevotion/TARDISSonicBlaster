@@ -3,27 +3,27 @@ Sonic Blaster:
     ingredients:
         D: DISPENSER
         T: TNT
-        S: 'MAP:1967'
+        S: 'FILLED_MAP:1967'
         E: BUCKET
-        B: WOOD_BUTTON
-    result: GOLD_HOE
+        B: OAK_BUTTON
+    result: GOLDEN_HOE
     amount: 1
     lore: 'The Squareness Gun'
 Blaster Battery:
     shape: -S-,-R-,-B-
     ingredients:
-        S: 'STAINED_GLASS:1'
+        S: ORANGE_STAINED_GLASS
         R: REDSTONE
         B: BUCKET
     result: BUCKET
     amount: 1
     lore: ''
 Landing Pad:
-    shape: -C-,-S-,-D-
+    shape: -C-,-S-,-R-
     ingredients:
-        C: CARPET
+        C: WHITE_CARPET
         S: SLIME_BLOCK
-        D: DIODE
+        R: REPEATER
     result: SLIME_BLOCK
     amount: 1
     lore: ''

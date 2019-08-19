@@ -46,6 +46,7 @@ public class TARDISSonicBlasterRecipe {
         if (!plugin.getRecipesConfig().getString(s + ".lore").isEmpty()) {
             im.setLore(Arrays.asList(plugin.getRecipesConfig().getString(s + ".lore").split("~")));
         }
+        im.setCustomModelData(10000002);
         is.setItemMeta(im);
         ShapedRecipe r = new ShapedRecipe(is);
         // get shape
