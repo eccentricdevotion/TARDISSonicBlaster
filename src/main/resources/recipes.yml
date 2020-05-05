@@ -3,8 +3,8 @@ Sonic Blaster:
     ingredients:
         D: DISPENSER
         T: TNT
-        S: 'FILLED_MAP:1967'
-        E: BUCKET
+        S: GLOWSTONE_DUST=Sonic Oscillator
+        E: BUCKET=Blaster Battery
         B: OAK_BUTTON
     result: GOLDEN_HOE
     amount: 1

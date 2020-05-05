@@ -4,10 +4,17 @@
 package me.eccentric_nz.tardissonicblaster;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Locale;
 import java.util.Set;
+
+import me.eccentric_nz.TARDIS.TARDIS;
+import me.eccentric_nz.TARDIS.enumeration.RECIPE_ITEM;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -18,9 +25,13 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class TARDISSonicBlasterRecipe {
 
     private final TARDISSonicBlaster plugin;
+    private final HashMap<String, Integer> modelData = new HashMap<>();
 
     public TARDISSonicBlasterRecipe(TARDISSonicBlaster plugin) {
         this.plugin = plugin;
+        modelData.put("Sonic Blaster", 10000001);
+        modelData.put("Blaster Battery", 10000002);
+        modelData.put("Landing Pad", 10000001);
     }
 
     public void addShapedRecipes() {
@@ -31,24 +42,18 @@ public class TARDISSonicBlasterRecipe {
     }
 
     public ShapedRecipe makeRecipe(String s) {
-        String[] result_iddata = plugin.getRecipesConfig().getString(s + ".result").split(":");
-        Material mat = Material.valueOf(result_iddata[0]);
+        Material mat = Material.valueOf(plugin.getRecipesConfig().getString(s + ".result"));
         int amount = plugin.getRecipesConfig().getInt(s + ".amount");
-        ItemStack is;
-        if (result_iddata.length == 2) {
-            short result_data = Short.parseShort(result_iddata[1]);
-            is = new ItemStack(mat, amount, result_data);
-        } else {
-            is = new ItemStack(mat, amount);
-        }
+        ItemStack is = new ItemStack(mat, amount);
         ItemMeta im = is.getItemMeta();
         im.setDisplayName(s);
         if (!plugin.getRecipesConfig().getString(s + ".lore").isEmpty()) {
             im.setLore(Arrays.asList(plugin.getRecipesConfig().getString(s + ".lore").split("~")));
         }
-        im.setCustomModelData(10000002);
+        im.setCustomModelData(modelData.get(s));
         is.setItemMeta(im);
-        ShapedRecipe r = new ShapedRecipe(is);
+        NamespacedKey key = new NamespacedKey(TARDIS.plugin, s.replace(" ", "_").toLowerCase(Locale.ENGLISH));
+        ShapedRecipe r = new ShapedRecipe(key, is);
         // get shape
         try {
             String[] shape_tmp = plugin.getRecipesConfig().getString(s + ".shape").split(",");
@@ -60,12 +65,19 @@ public class TARDISSonicBlasterRecipe {
             Set<String> ingredients = plugin.getRecipesConfig().getConfigurationSection(s + ".ingredients").getKeys(false);
             for (String g : ingredients) {
                 char c = g.charAt(0);
-                String[] recipe_iddata = plugin.getRecipesConfig().getString(s + ".ingredients." + g).split(":");
-                Material m = Material.valueOf(recipe_iddata[0]);
-                if (recipe_iddata.length == 2) {
-                    int recipe_data = Integer.parseInt(recipe_iddata[1]);
-                    r.setIngredient(c, m, recipe_data);
+                String ingredient = plugin.getRecipesConfig().getString(s + ".ingredients." + g);
+                if (ingredient.contains("=")) {
+                    ItemStack exact;
+                    String[] choice = ingredient.split("=");
+                    Material m = Material.valueOf(choice[0]);
+                    exact = new ItemStack(m, 1);
+                    ItemMeta em = exact.getItemMeta();
+                    em.setDisplayName(choice[1]);
+                    em.setCustomModelData(RECIPE_ITEM.getByName(choice[1]).getCustomModelData());
+                    exact.setItemMeta(em);
+                    r.setIngredient(c, new RecipeChoice.ExactChoice(exact));
                 } else {
+                    Material m = Material.valueOf(ingredient);
                     r.setIngredient(c, m);
                 }
             }

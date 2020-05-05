@@ -49,7 +49,6 @@ public class TARDISSonicBlaster extends JavaPlugin {
         pluginName = ChatColor.GOLD + "[" + pdfFile.getName() + "]" + ChatColor.RESET + " ";
         pm.registerEvents(new TARDISSonicBlasterListener(this), this);
         pm.registerEvents(new TARDISSonicBlasterCraftListener(), this);
-        getCommand("tardissonicblaster").setExecutor(new TARDISSonicBlasterCommand(this));
         loadRecipes();
         maxUsableDistance = Math.sqrt(getConfig().getDouble("max_blocks"));
     }

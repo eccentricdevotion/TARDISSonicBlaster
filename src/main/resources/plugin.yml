@@ -3,8 +3,8 @@ description: The blaster used digital technology to create a sonic wave, project
 main: me.eccentric_nz.tardissonicblaster.TARDISSonicBlaster
 name: TARDISSonicBlaster
 load: POSTWORLD
-version: 1.0.1
-api-version: 1.14
+version: 1.0.2
+api-version: 1.15
 website: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
 dev-url: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
 url: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
@@ -12,11 +12,4 @@ permissions:
     sb.use:
         description: A description.
         default: op
-commands:
-    tardissonicblaster:
-        aliases: [tsb,sonicblaster,sb]
-        description: A description.
-        usage: /<command> [arg0] [arg1]
-        permission: sb.use
-        permission-message: You don't have the permission <permission> to use this command
 depend: [TARDIS]

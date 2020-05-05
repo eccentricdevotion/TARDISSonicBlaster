@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.eccentric_nz.tardissonicblaster</groupId>
     <artifactId>TARDISSonicBlaster</artifactId>
-    <version>1.0</version>
+    <version>1.0.2</version>
     <name>TARDISSonicBlaster</name>
     <repositories>
         <repository>
@@ -32,14 +32,14 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.14.4-R0.1-SNAPSHOT</version>
+            <version>1.15.2-R0.1-SNAPSHOT</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>me.eccentric_nz.TARDIS</groupId>
             <artifactId>TARDIS</artifactId>
-            <version>4.1.1</version>
+            <version>4.4</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
