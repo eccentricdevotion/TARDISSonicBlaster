@@ -9,7 +9,7 @@ website: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
 dev-url: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
 url: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
 permissions:
-    sb.use:
-        description: A description.
-        default: op
-depend: [TARDIS]
+  sb.use:
+    description: A description.
+    default: op
+depend: [ TARDIS ]

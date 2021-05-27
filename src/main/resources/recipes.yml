@@ -1,29 +1,29 @@
 Sonic Blaster:
-    shape: DTD,TST,EBE
-    ingredients:
-        D: DISPENSER
-        T: TNT
-        S: GLOWSTONE_DUST=Sonic Oscillator
-        E: BUCKET=Blaster Battery
-        B: OAK_BUTTON
-    result: GOLDEN_HOE
-    amount: 1
-    lore: 'The Squareness Gun'
+  shape: DTD,TST,EBE
+  ingredients:
+    D: DISPENSER
+    T: TNT
+    S: GLOWSTONE_DUST=Sonic Oscillator
+    E: BUCKET=Blaster Battery
+    B: OAK_BUTTON
+  result: GOLDEN_HOE
+  amount: 1
+  lore: 'The Squareness Gun'
 Blaster Battery:
-    shape: -S-,-R-,-B-
-    ingredients:
-        S: ORANGE_STAINED_GLASS
-        R: REDSTONE
-        B: BUCKET
-    result: BUCKET
-    amount: 1
-    lore: ''
+  shape: -S-,-R-,-B-
+  ingredients:
+    S: ORANGE_STAINED_GLASS
+    R: REDSTONE
+    B: BUCKET
+  result: BUCKET
+  amount: 1
+  lore: ''
 Landing Pad:
-    shape: -C-,-S-,-R-
-    ingredients:
-        C: WHITE_CARPET
-        S: SLIME_BLOCK
-        R: REPEATER
-    result: SLIME_BLOCK
-    amount: 1
-    lore: ''
+  shape: -C-,-S-,-R-
+  ingredients:
+    C: WHITE_CARPET
+    S: SLIME_BLOCK
+    R: REPEATER
+  result: SLIME_BLOCK
+  amount: 1
+  lore: ''
