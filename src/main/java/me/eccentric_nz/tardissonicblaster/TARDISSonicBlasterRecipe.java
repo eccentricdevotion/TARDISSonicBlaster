@@ -45,7 +45,8 @@ public class TARDISSonicBlasterRecipe {
 		assert im != null;
 		im.setDisplayName(s);
 		if (!Objects.requireNonNull(plugin.getRecipesConfig().getString(s + ".lore")).isEmpty()) {
-			im.setLore(Arrays.asList(Objects.requireNonNull(plugin.getRecipesConfig().getString(s + ".lore")).split("~")));
+			im.setLore(Arrays.asList(Objects.requireNonNull(plugin.getRecipesConfig().getString(
+					s + ".lore")).split("~")));
 		}
 		im.setCustomModelData(modelData.get(s));
 		is.setItemMeta(im);
@@ -82,7 +83,9 @@ public class TARDISSonicBlasterRecipe {
 				}
 			}
 		} catch (IllegalArgumentException e) {
-			plugin.getServer().getConsoleSender().sendMessage(plugin.getPluginName() + ChatColor.RED + "Recipe failed! " + ChatColor.RESET + "Check the config file!");
+			plugin.getServer().getConsoleSender().sendMessage(
+					plugin.getPluginName() + ChatColor.RED + "Recipe failed! " + ChatColor.RESET +
+					"Check the config file!");
 		}
 		// add the recipe to TARDIS' list
 		plugin.getTardisAPI().getShapedRecipes().put(s, r);

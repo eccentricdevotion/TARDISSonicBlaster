@@ -12,4 +12,4 @@ permissions:
   sb.use:
     description: A description.
     default: op
-depend: [ TARDIS ]
+depend: [TARDIS]

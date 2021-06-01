@@ -46,13 +46,18 @@ public class TARDISSonicBlasterCraftListener implements Listener {
 		Recipe recipe = ci.getRecipe();
 		ItemStack is = ci.getResult();
 		if (recipe instanceof ShapedRecipe) {
-			if (is == null || !is.hasItemMeta() || !Objects.requireNonNull(is.getItemMeta()).hasDisplayName() || !is.getItemMeta().getDisplayName().equals("Sonic Blaster")) {
+			if (is == null || !is.hasItemMeta() || !Objects.requireNonNull(is.getItemMeta()).hasDisplayName() ||
+				!is.getItemMeta().getDisplayName().equals("Sonic Blaster")) {
 				return;
 			}
 			ItemStack b1 = ci.getItem(7);
 			ItemStack b2 = ci.getItem(9);
 			assert b1 != null;
-			if ((!b1.hasItemMeta() || !Objects.requireNonNull(b2).hasItemMeta()) || (!Objects.requireNonNull(b1.getItemMeta()).hasDisplayName() || !Objects.requireNonNull(b2.getItemMeta()).hasDisplayName()) || (!b1.getItemMeta().getDisplayName().equals("Blaster Battery") || !b2.getItemMeta().getDisplayName().equals("Blaster Battery"))) {
+			if ((!b1.hasItemMeta() || !Objects.requireNonNull(b2).hasItemMeta()) ||
+				(!Objects.requireNonNull(b1.getItemMeta()).hasDisplayName() ||
+				 !Objects.requireNonNull(b2.getItemMeta()).hasDisplayName()) ||
+				(!b1.getItemMeta().getDisplayName().equals("Blaster Battery") ||
+				 !b2.getItemMeta().getDisplayName().equals("Blaster Battery"))) {
 				ci.setResult(null);
 			}
 		}

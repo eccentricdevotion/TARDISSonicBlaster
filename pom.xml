@@ -4,16 +4,37 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>me.eccentric_nz.tardissonicblaster</groupId>
 	<artifactId>TARDISSonicBlaster</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
+	<packaging>jar</packaging>
 	<name>TARDISSonicBlaster</name>
 	<description>The squareness gun for Spigot/Paper Minecraft servers</description>
 	<url>https://github.com/eccentricdevotion/TARDISSonicBlaster</url>
+	<inceptionYear>2015</inceptionYear>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>16</maven.compiler.source>
 		<maven.compiler.target>16</maven.compiler.target>
 		<java.version>16</java.version>
 	</properties>
+	<licenses>
+		<license>
+			<name>GNU General Public License v3.0</name>
+			<url>https://github.com/eccentricdevotion/TARDISSonicBlaster/blob/master/LICENSE</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/eccentricdevotion/TARDISSonicBlaster/issues</url>
+	</issueManagement>
+	<scm>
+		<connection>scm:git:ssh://github.com/eccentricdevotion/TARDISSonicBlaster</connection>
+		<developerConnection>scm:git:ssh://github.com/eccentricdevotion/TARDISSonicBlaster</developerConnection>
+	</scm>
+	<ciManagement>
+		<system>Jenkins</system>
+		<url>http://tardisjenkins.duckdns.org:8080</url>
+	</ciManagement>
 	<repositories>
 		<repository>
 			<id>spigot-repo</id>
@@ -29,13 +50,11 @@
 		<profile>
 			<id>local</id>
 			<activation>
-				<property>
-					<name>!env.BUILD_NUMBER</name>
-				</property>
+				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
 				<!-- Set the build number to the date and time of the build -->
-				<project.buildNumber>${timestamp}</project.buildNumber>
+				<build.number>${timestamp}</build.number>
 			</properties>
 			<build>
 				<plugins>
@@ -48,11 +67,14 @@
 						</configuration>
 						<executions>
 							<execution>
-								<id>buildnumber</id>
+								<id>create-timestamp-id</id>
 								<phase>validate</phase>
 								<goals>
-									<goal>create</goal>
+									<goal>create-timestamp</goal>
 								</goals>
+								<configuration>
+									<timestampFormat>yyyy.MM.dd-HH.mm.ss</timestampFormat>
+								</configuration>
 							</execution>
 						</executions>
 					</plugin>
@@ -68,11 +90,12 @@
 			</activation>
 			<properties>
 				<!-- Get the build number from Jenkins -->
-				<project.buildNumber>${env.BUILD_NUMBER}</project.buildNumber>
+				<build.number>${env.BUILD_NUMBER}</build.number>
 			</properties>
 			<build>
 				<plugins>
 					<plugin>
+						<!-- Attach Javadocs -->
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
 						<version>3.3.0</version>
@@ -94,7 +117,8 @@
 		</profile>
 	</profiles>
 	<build>
-		<finalName>${project.artifactId}-${project.version}-${project.buildNumber}</finalName>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		<defaultGoal>clean package install</defaultGoal>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -119,7 +143,7 @@
 		<dependency>
 			<groupId>me.eccentric_nz.tardis</groupId>
 			<artifactId>TARDIS</artifactId>
-			<version>4.6.2-SNAPSHOT</version>
+			<version>4.6.2</version>
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
