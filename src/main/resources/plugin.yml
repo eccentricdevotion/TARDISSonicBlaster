@@ -1,15 +1,15 @@
-author: eccentric_nz
-description: The blaster used digital technology to create a sonic wave, projected into the form of pulsing squares of blue light, which could cut through thick walls. It also had a reverse function which could replace the removed chunk of material afterwards.
+authors: [eccentric_nz]
 main: me.eccentric_nz.tardissonicblaster.TARDISSonicBlaster
 name: TARDISSonicBlaster
-load: POSTWORLD
+description: The blaster used digital technology to create a sonic wave, projected into the form of pulsing squares of blue light, which could cut through thick walls. It also had a reverse function which could replace the removed chunk of material afterwards.
 version: 1.0.2
-api-version: 1.15
-website: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
-dev-url: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
-url: http://dev.bukkit.org/bukkit-plugins/tardissonicblaster
+api-version: 1.16
+website: http://tardisjenkins.duckdns.org:8080/job/TARDISSonicBlaster/
+dev-url: http://github.com/eccentricdevotion/TARDISSonicBlaster/
+url: http://eccentricdevotion.github.io/TARDIS/
+load: POSTWORLD
+depend: [TARDIS]
 permissions:
   sb.use:
     description: A description.
     default: op
-depend: [TARDIS]
