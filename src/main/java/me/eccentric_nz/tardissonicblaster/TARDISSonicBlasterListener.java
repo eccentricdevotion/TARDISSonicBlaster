@@ -15,27 +15,27 @@ import java.util.UUID;
 
 public class TARDISSonicBlasterListener implements Listener {
 
-	private final TARDISSonicBlaster plugin;
+    private final TARDISSonicBlaster plugin;
 
-	public TARDISSonicBlasterListener(TARDISSonicBlaster plugin) {
-		this.plugin = plugin;
-	}
+    public TARDISSonicBlasterListener(TARDISSonicBlaster plugin) {
+        this.plugin = plugin;
+    }
 
-	@EventHandler(priority = EventPriority.NORMAL)
-	public void onInteract(PlayerInteractEvent event) {
-		final Player player = event.getPlayer();
-		if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-			if (TARDISSonicBlasterUtils.checkBlasterInHand(player)) {
-				UUID uuid = player.getUniqueId();
-				if (!plugin.getIsBlasting().contains(uuid)) {
-					// get distance
-					Location target = Objects.requireNonNull(event.getClickedBlock()).getLocation();
-					double distance = TARDISSonicBlasterUtils.getDistanceToTargetBlock(target, player);
-					double angle = TARDISSonicBlasterUtils.getLineOfSightAngle(player);
-					COMPASS direction = COMPASS.valueOf(TARDISStaticUtils.getPlayersDirection(player, false));
-					new TARDISSonicBlasterAction(plugin).blast(target, direction, angle, distance, 100, uuid);
-				}
-			}
-		}
-	}
+    @EventHandler(priority = EventPriority.NORMAL)
+    public void onInteract(PlayerInteractEvent event) {
+        final Player player = event.getPlayer();
+        if (event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+            if (TARDISSonicBlasterUtils.checkBlasterInHand(player)) {
+                UUID uuid = player.getUniqueId();
+                if (!plugin.getIsBlasting().contains(uuid)) {
+                    // get distance
+                    Location target = Objects.requireNonNull(event.getClickedBlock()).getLocation();
+                    double distance = TARDISSonicBlasterUtils.getDistanceToTargetBlock(target, player);
+                    double angle = TARDISSonicBlasterUtils.getLineOfSightAngle(player);
+                    COMPASS direction = COMPASS.valueOf(TARDISStaticUtils.getPlayersDirection(player, false));
+                    new TARDISSonicBlasterAction(plugin).blast(target, direction, angle, distance, 100, uuid);
+                }
+            }
+        }
+    }
 }
