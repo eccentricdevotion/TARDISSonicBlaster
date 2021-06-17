@@ -1,5 +1,18 @@
 /*
- *  Copyright 2015 eccentric_nz.
+ * Copyright (C) 2021 eccentric_nz
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 package me.eccentric_nz.tardissonicblaster;
 
@@ -13,15 +26,15 @@ import java.util.UUID;
 /**
  * @author eccentric_nz
  */
-public class TARDISSonicBlasterAction implements Runnable {
+public class TardisSonicBlasterAction implements Runnable {
 
-    private final TARDISSonicBlaster plugin;
+    private final TardisSonicBlasterPlugin plugin;
 
-    public TARDISSonicBlasterAction(TARDISSonicBlaster plugin) {
+    public TardisSonicBlasterAction(TardisSonicBlasterPlugin plugin) {
         this.plugin = plugin;
     }
 
-    public void blast(Location target, COMPASS direction, double angle, double distance, int power, UUID uuid) {
+    public void blast(Location target, COMPASS direction, double angle, double distance, UUID uuid) {
         if (plugin.getIsBlasting().contains(uuid)) {
             return;
         }
@@ -54,13 +67,13 @@ public class TARDISSonicBlasterAction implements Runnable {
         int block_count = 0;
         int depth = determineHorizontalSectionDepth(angle);
         System.out.println("depth: " + depth);
-        int ax = getAddX(direction);
-        int az = getAddZ(direction);
+        int addX = getAddX(direction);
+        int addZ = getAddZ(direction);
         int x = target.getBlockX();
         int y = target.getBlockY();
         int z = target.getBlockZ();
         int l = 0;
-        World w = target.getWorld();
+        World world = target.getWorld();
         if (depth == 1) {
             // vertical
         } else {
@@ -69,12 +82,12 @@ public class TARDISSonicBlasterAction implements Runnable {
             while (block_count <= max_blocks) {
                 for (int i = 0; i < depth; i++) {
                     // calculate x,z
-                    int xx = x + (i * ax);
+                    int xx = x + (i * addX);
                     int yy = y - l;
-                    int zz = z + (i * az);
-                    assert w != null;
-                    w.getBlockAt(xx, yy, zz).setType(Material.AIR);
-                    w.getBlockAt(xx, yy - 1, zz).setType(Material.AIR);
+                    int zz = z + (i * addZ);
+                    assert world != null;
+                    world.getBlockAt(xx, yy, zz).setType(Material.AIR);
+                    world.getBlockAt(xx, yy - 1, zz).setType(Material.AIR);
                     if ((block_count += 2) > max_blocks) {
                         // remove tracker
                         plugin.getIsBlasting().remove(uuid);

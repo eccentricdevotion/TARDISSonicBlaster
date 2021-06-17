@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 eccentric_nz
+ * Copyright (C) 2021 eccentric_nz
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@ import java.util.Objects;
 /**
  * @author eccentric_nz
  */
-public class TARDISSonicBlasterCraftListener implements Listener {
+public class TardisSonicBlasterCraftListener implements Listener {
 
     /**
      * This event will check the crafting recipe to see if it is a sonic
@@ -42,18 +42,18 @@ public class TARDISSonicBlasterCraftListener implements Listener {
      */
     @EventHandler(priority = EventPriority.HIGH)
     public void onSonicUpgrade(PrepareItemCraftEvent event) {
-        CraftingInventory ci = event.getInventory();
-        Recipe recipe = ci.getRecipe();
-        ItemStack is = ci.getResult();
+        CraftingInventory craftingInventory = event.getInventory();
+        Recipe recipe = craftingInventory.getRecipe();
+        ItemStack itemStack = craftingInventory.getResult();
         if (recipe instanceof ShapedRecipe) {
-            if (is == null || !is.hasItemMeta() || !Objects.requireNonNull(is.getItemMeta()).hasDisplayName() || !is.getItemMeta().getDisplayName().equals("Sonic Blaster")) {
+            if (itemStack == null || !itemStack.hasItemMeta() || !Objects.requireNonNull(itemStack.getItemMeta()).hasDisplayName() || !itemStack.getItemMeta().getDisplayName().equals("Sonic Blaster")) {
                 return;
             }
-            ItemStack b1 = ci.getItem(7);
-            ItemStack b2 = ci.getItem(9);
+            ItemStack b1 = craftingInventory.getItem(7); // TODO Figure out what these two "b" variables are and rename them.
+            ItemStack b2 = craftingInventory.getItem(9);
             assert b1 != null;
             if ((!b1.hasItemMeta() || !Objects.requireNonNull(b2).hasItemMeta()) || (!Objects.requireNonNull(b1.getItemMeta()).hasDisplayName() || !Objects.requireNonNull(b2.getItemMeta()).hasDisplayName()) || (!b1.getItemMeta().getDisplayName().equals("Blaster Battery") || !b2.getItemMeta().getDisplayName().equals("Blaster Battery"))) {
-                ci.setResult(null);
+                craftingInventory.setResult(null);
             }
         }
     }
