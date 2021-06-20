@@ -16,8 +16,8 @@
  */
 package me.eccentric_nz.tardissonicblaster;
 
-import me.eccentric_nz.tardis.enumeration.COMPASS;
-import me.eccentric_nz.tardis.utility.TARDISStaticUtils;
+import me.eccentric_nz.tardis.enumeration.CardinalDirection;
+import me.eccentric_nz.tardis.utility.TardisStaticUtils;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -48,7 +48,7 @@ public class TardisSonicBlasterListener implements Listener {
                     Location target = Objects.requireNonNull(event.getClickedBlock()).getLocation();
                     double distance = TardisSonicBlasterUtils.getDistanceToTargetBlock(target, player);
                     double angle = TardisSonicBlasterUtils.getLineOfSightAngle(player);
-                    COMPASS direction = COMPASS.valueOf(TARDISStaticUtils.getPlayersDirection(player, false));
+                    CardinalDirection direction = CardinalDirection.valueOf(TardisStaticUtils.getPlayersDirection(player, false));
                     new TardisSonicBlasterAction(plugin).blast(target, direction, angle, distance, uuid);
                 }
             }

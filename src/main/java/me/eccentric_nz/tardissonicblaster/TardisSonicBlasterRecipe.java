@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardissonicblaster;
 
-import me.eccentric_nz.tardis.TARDISPlugin;
+import me.eccentric_nz.tardis.TardisPlugin;
 import me.eccentric_nz.tardis.enumeration.RecipeItem;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -62,7 +62,7 @@ public class TardisSonicBlasterRecipe {
         }
         itemMeta.setCustomModelData(modelData.get(s));
         itemStack.setItemMeta(itemMeta);
-        NamespacedKey key = new NamespacedKey(TARDISPlugin.plugin, s.replace(" ", "_").toLowerCase(Locale.ENGLISH));
+        NamespacedKey key = new NamespacedKey(TardisPlugin.plugin, s.replace(" ", "_").toLowerCase(Locale.ENGLISH));
         ShapedRecipe recipe = new ShapedRecipe(key, itemStack);
         // get shape
         try {
