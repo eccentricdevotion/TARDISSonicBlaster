@@ -61,7 +61,7 @@ public class TardisSonicBlasterPlugin extends JavaPlugin {
             return;
         }
         tardis = (TardisPlugin) plugin;
-        tardisApi = tardis.getTardisAPI();
+        tardisApi = tardis.getTardisApi();
         PluginDescriptionFile pdfFile = getDescription();
         pluginName = ChatColor.GOLD + "[" + pdfFile.getName() + "]" + ChatColor.RESET + " ";
         pluginManager.registerEvents(new TardisSonicBlasterListener(this), this);
