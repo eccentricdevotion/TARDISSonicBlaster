@@ -4,7 +4,7 @@ name: TARDISSonicBlaster
 description: The blaster used digital technology to create a sonic wave, projected into the form of pulsing squares of blue light, which could cut through thick walls. It also had a reverse function which could replace the removed chunk of material afterwards.
 version: maven-version-number
 build-number: maven-build-number
-api-version: 1.16
+api-version: 1.17
 website: http://tardisjenkins.duckdns.org:8080/job/TARDISSonicBlaster/
 dev-url: http://github.com/eccentricdevotion/TARDISSonicBlaster/
 url: http://eccentricdevotion.github.io/TARDIS/
@@ -12,5 +12,5 @@ load: POSTWORLD
 depend: [TARDIS]
 permissions:
   sb.use:
-    description: A description.
+    description: Allow players to use Sonic Blasters.
     default: op
