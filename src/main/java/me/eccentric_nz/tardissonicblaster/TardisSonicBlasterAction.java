@@ -16,7 +16,7 @@
  */
 package me.eccentric_nz.tardissonicblaster;
 
-import me.eccentric_nz.tardis.enumeration.CardinalDirection;
+import me.eccentric_nz.TARDIS.enumeration.COMPASS;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -34,7 +34,7 @@ public class TardisSonicBlasterAction implements Runnable {
         this.plugin = plugin;
     }
 
-    public void blast(Location target, CardinalDirection direction, double angle, double distance, UUID uuid) {
+    public void blast(Location target, COMPASS direction, double angle, double distance, UUID uuid) {
         if (plugin.getIsBlasting().contains(uuid)) {
             return;
         }
@@ -62,7 +62,7 @@ public class TardisSonicBlasterAction implements Runnable {
         plugin.getIsBlasting().remove(uuid);
     }
 
-    private void drill(Location target, CardinalDirection direction, double angle, UUID uuid) {
+    private void drill(Location target, COMPASS direction, double angle, UUID uuid) {
         int max_blocks = plugin.getConfig().getInt("max_blocks");
         int block_count = 0;
         int depth = determineHorizontalSectionDepth(angle);
@@ -127,7 +127,7 @@ public class TardisSonicBlasterAction implements Runnable {
         }
     }
 
-    private int getAddX(CardinalDirection direction) {
+    private int getAddX(COMPASS direction) {
         return switch (direction) {
             case EAST -> 1;
             case WEST -> -1;
@@ -135,7 +135,7 @@ public class TardisSonicBlasterAction implements Runnable {
         };
     }
 
-    private int getAddZ(CardinalDirection direction) {
+    private int getAddZ(COMPASS direction) {
         return switch (direction) {
             case SOUTH -> 1;
             case NORTH -> -1;

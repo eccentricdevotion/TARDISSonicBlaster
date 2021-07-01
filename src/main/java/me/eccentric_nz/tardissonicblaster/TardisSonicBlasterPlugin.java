@@ -16,9 +16,9 @@
  */
 package me.eccentric_nz.tardissonicblaster;
 
-import me.eccentric_nz.tardis.TardisPlugin;
-import me.eccentric_nz.tardis.api.TardisApi;
-import me.eccentric_nz.tardis.files.TardisFileCopier;
+import me.eccentric_nz.TARDIS.TARDIS;
+import me.eccentric_nz.TARDIS.api.TardisAPI;
+import me.eccentric_nz.TARDIS.files.TARDISFileCopier;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -37,8 +37,8 @@ public class TardisSonicBlasterPlugin extends JavaPlugin {
 
     private final List<UUID> isBlasting = new ArrayList<>();
     private String pluginName;
-    private TardisApi tardisApi;
-    private TardisPlugin tardis;
+    private TardisAPI tardisApi;
+    private TARDIS tardis;
     private FileConfiguration recipesConfig;
     private double maxUsableDistance;
 
@@ -60,8 +60,8 @@ public class TardisSonicBlasterPlugin extends JavaPlugin {
             pluginManager.disablePlugin(this);
             return;
         }
-        tardis = (TardisPlugin) plugin;
-        tardisApi = tardis.getTardisApi();
+        tardis = (TARDIS) plugin;
+        tardisApi = tardis.getTardisAPI();
         PluginDescriptionFile pdfFile = getDescription();
         pluginName = ChatColor.GOLD + "[" + pdfFile.getName() + "]" + ChatColor.RESET + " ";
         pluginManager.registerEvents(new TardisSonicBlasterListener(this), this);
@@ -86,10 +86,10 @@ public class TardisSonicBlasterPlugin extends JavaPlugin {
     public File copy(String fileName) {
         String filePath = getDataFolder() + File.separator + fileName;
         InputStream inputStream = getResource(fileName);
-        return TardisFileCopier.copy(filePath, inputStream, false);
+        return TARDISFileCopier.copy(filePath, inputStream, false);
     }
 
-    public TardisApi getTardisApi() {
+    public TardisAPI getTardisApi() {
         return tardisApi;
     }
 
