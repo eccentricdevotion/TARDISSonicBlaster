@@ -45,7 +45,7 @@ public class TardisSonicBlasterListener implements Listener {
                 UUID uuid = player.getUniqueId();
                 if (!plugin.getIsBlasting().contains(uuid)) {
                     // get distance
-                    Location target = Objects.requireNonNull(event.getClickedBlock()).getLocation();
+                    Location target = event.getClickedBlock().getLocation();
                     double distance = TardisSonicBlasterUtils.getDistanceToTargetBlock(target, player);
                     double angle = TardisSonicBlasterUtils.getLineOfSightAngle(player);
                     COMPASS direction = COMPASS.valueOf(TARDISStaticUtils.getPlayersDirection(player, false));

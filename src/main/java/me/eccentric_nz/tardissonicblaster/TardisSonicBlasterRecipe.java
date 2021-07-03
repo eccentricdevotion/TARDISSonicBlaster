@@ -44,7 +44,7 @@ public class TardisSonicBlasterRecipe {
     }
 
     public void addShapedRecipes() {
-        Set<String> shaped = Objects.requireNonNull(plugin.getRecipesConfig().getConfigurationSection("")).getKeys(false);
+        Set<String> shaped = plugin.getRecipesConfig().getConfigurationSection("").getKeys(false);
         for (String s : shaped) {
             plugin.getServer().addRecipe(makeRecipe(s));
         }
@@ -55,10 +55,9 @@ public class TardisSonicBlasterRecipe {
         int amount = plugin.getRecipesConfig().getInt(s + ".amount");
         ItemStack itemStack = new ItemStack(material, amount);
         ItemMeta itemMeta = itemStack.getItemMeta();
-        assert itemMeta != null;
         itemMeta.setDisplayName(s);
-        if (!Objects.requireNonNull(plugin.getRecipesConfig().getString(s + ".lore")).isEmpty()) {
-            itemMeta.setLore(Arrays.asList(Objects.requireNonNull(plugin.getRecipesConfig().getString(s + ".lore")).split("~")));
+        if (!plugin.getRecipesConfig().getString(s + ".lore").isEmpty()) {
+            itemMeta.setLore(Arrays.asList(plugin.getRecipesConfig().getString(s + ".lore").split("~")));
         }
         itemMeta.setCustomModelData(modelData.get(s));
         itemStack.setItemMeta(itemMeta);
@@ -66,24 +65,22 @@ public class TardisSonicBlasterRecipe {
         ShapedRecipe recipe = new ShapedRecipe(key, itemStack);
         // get shape
         try {
-            String[] shape_tmp = Objects.requireNonNull(plugin.getRecipesConfig().getString(s + ".shape")).split(",");
+            String[] shape_tmp = plugin.getRecipesConfig().getString(s + ".shape").split(",");
             String[] shape = new String[3];
             for (int i = 0; i < 3; i++) {
                 shape[i] = shape_tmp[i].replaceAll("-", " ");
             }
             recipe.shape(shape[0], shape[1], shape[2]);
-            Set<String> ingredients = Objects.requireNonNull(plugin.getRecipesConfig().getConfigurationSection(s + ".ingredients")).getKeys(false);
+            Set<String> ingredients = plugin.getRecipesConfig().getConfigurationSection(s + ".ingredients").getKeys(false);
             for (String g : ingredients) {
                 char c = g.charAt(0);
                 String ingredient = plugin.getRecipesConfig().getString(s + ".ingredients." + g);
-                assert ingredient != null;
                 if (ingredient.contains("=")) {
                     ItemStack exact;
                     String[] choice = ingredient.split("=");
                     Material m = Material.valueOf(choice[0]);
                     exact = new ItemStack(m, 1);
                     ItemMeta exactItemMeta = exact.getItemMeta();
-                    assert exactItemMeta != null;
                     exactItemMeta.setDisplayName(choice[1]);
                     exactItemMeta.setCustomModelData(RecipeItem.getByName(choice[1]).getCustomModelData());
                     exact.setItemMeta(exactItemMeta);

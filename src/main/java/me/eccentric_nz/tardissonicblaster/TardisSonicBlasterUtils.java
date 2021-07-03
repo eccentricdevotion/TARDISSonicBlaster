@@ -34,7 +34,6 @@ public class TardisSonicBlasterUtils {
             return false;
         }
         ItemMeta itemMeta = itemStack.getItemMeta();
-        assert itemMeta != null;
         if (!itemMeta.hasDisplayName()) {
             return false;
         }

@@ -46,13 +46,12 @@ public class TardisSonicBlasterCraftListener implements Listener {
         Recipe recipe = craftingInventory.getRecipe();
         ItemStack itemStack = craftingInventory.getResult();
         if (recipe instanceof ShapedRecipe) {
-            if (itemStack == null || !itemStack.hasItemMeta() || !Objects.requireNonNull(itemStack.getItemMeta()).hasDisplayName() || !itemStack.getItemMeta().getDisplayName().equals("Sonic Blaster")) {
+            if (itemStack == null || !itemStack.hasItemMeta() || !itemStack.getItemMeta().hasDisplayName() || !itemStack.getItemMeta().getDisplayName().equals("Sonic Blaster")) {
                 return;
             }
             ItemStack b1 = craftingInventory.getItem(7); // TODO Figure out what these two "b" variables are and rename them.
             ItemStack b2 = craftingInventory.getItem(9);
-            assert b1 != null;
-            if ((!b1.hasItemMeta() || !Objects.requireNonNull(b2).hasItemMeta()) || (!Objects.requireNonNull(b1.getItemMeta()).hasDisplayName() || !Objects.requireNonNull(b2.getItemMeta()).hasDisplayName()) || (!b1.getItemMeta().getDisplayName().equals("Blaster Battery") || !b2.getItemMeta().getDisplayName().equals("Blaster Battery"))) {
+            if ((!b1.hasItemMeta() || !b2.hasItemMeta()) || (!b1.getItemMeta().hasDisplayName() || !b2.getItemMeta().hasDisplayName()) || (!b1.getItemMeta().getDisplayName().equals("Blaster Battery") || !b2.getItemMeta().getDisplayName().equals("Blaster Battery"))) {
                 craftingInventory.setResult(null);
             }
         }

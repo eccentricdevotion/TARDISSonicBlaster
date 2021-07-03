@@ -85,7 +85,6 @@ public class TardisSonicBlasterAction implements Runnable {
                     int xx = x + (i * addX);
                     int yy = y - l;
                     int zz = z + (i * addZ);
-                    assert world != null;
                     world.getBlockAt(xx, yy, zz).setType(Material.AIR);
                     world.getBlockAt(xx, yy - 1, zz).setType(Material.AIR);
                     if ((block_count += 2) > max_blocks) {
