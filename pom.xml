@@ -125,7 +125,7 @@
         </dependency>
         <dependency>
             <!-- TARDIS -->
-            <groupId>me.eccentric_nz.tardis</groupId>
+            <groupId>me.eccentric_nz.TARDIS</groupId>
             <artifactId>TARDIS</artifactId>
             <version>4.7.3-SNAPSHOT</version>
             <type>jar</type>
