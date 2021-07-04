@@ -25,8 +25,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.inventory.ShapedRecipe;
 
-import java.util.Objects;
-
 /**
  * @author eccentric_nz
  */
